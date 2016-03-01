@@ -30,7 +30,9 @@
       (repl/start {:port (parse-port repl-port)}))
     (http/start {:handler app
                  :init    init
-                 :port    port})))
+                 :port    port
+                 :io-threads (* 2 (.availableProcessors (Runtime/getRuntime)))
+                 :worker-threads 200})))
 
 (defn -main [& args]
   (cond
