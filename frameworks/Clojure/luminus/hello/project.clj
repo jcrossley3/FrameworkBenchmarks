@@ -26,6 +26,7 @@
                  [conman "0.2.9"]
                  [org.postgresql/postgresql "9.4-1206-jdbc4"]
                  [org.webjars/webjars-locator-jboss-vfs "0.1.0"]
+                 [io.undertow/undertow-core "1.2.5.Final"]
                  [luminus-immutant "0.1.0"]]
 
   :min-lein-version "2.0.0"

@@ -3,7 +3,8 @@
             [luminus.repl-server :as repl]
             [luminus.http-server :as http]
             [hello.db.migrations :as migrations]
-            [environ.core :refer [env]])
+            [environ.core :refer [env]]
+            [immutant.web :as immutant])
   (:gen-class))
 
 (defn parse-port [port]
@@ -32,7 +33,8 @@
                  :init    init
                  :port    port
                  :io-threads (* 2 (.availableProcessors (Runtime/getRuntime)))
-                 :worker-threads 200})))
+                 :worker-threads 200})
+    (immutant/run app (assoc @http/http-server :path "/io" :dispatch? false))))
 
 (defn -main [& args]
   (cond
